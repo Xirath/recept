@@ -33,8 +33,8 @@ body, html {
 
 /** Spacing between li**/
 .article li {
-    align-items: start;
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-left: 1.5em;
 }
 
 /** Size of bullets **/
@@ -46,8 +46,6 @@ body, html {
 .article ul, ol {
     text-align: left;
     padding: 0px;
-    margin-left: 10px;
-    list-style-position: inside;
 }
 
 .bottom-images{
