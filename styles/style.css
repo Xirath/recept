@@ -1,0 +1,69 @@
+body, html {
+    background-color: #DCACAC;
+    margin: 0px;
+    padding-top: 0px;
+}
+
+.top-image{
+    background-image: url("../images/pannkakor.jpg");
+    height: 600px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.article {
+    padding: 0rem 2rem 2rem 2rem;
+    margin-bottom: 50px;
+}
+
+.article h1{
+    color: #A10000;
+}
+
+.infobox{
+    background-color: #EBEBEB;
+    padding: 10px;
+}
+
+/** Spacing between li**/
+.article li {
+    align-items: start;
+    margin-top: 10px;
+}
+
+/** Size of bullets **/
+.article ul li::marker {
+  font-size: 0.8em;
+}
+
+/** Reduce indentation of lists **/
+.article ul, ol {
+    text-align: left;
+    padding: 0px;
+    margin-left: 10px;
+    list-style-position: inside;
+}
+
+.bottom-images{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    width: 100%;
+}
+
+.bottom-images img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.content{
+    background-color: white;
+    width: 60%;
+    min-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
