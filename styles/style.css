@@ -58,11 +58,37 @@ h1, h2, h3, h4, h5, h6 {
 
 /****************/
 
+:root{
+    /* Colors */
+    --clr-red: #A10000;
+    --clr-white: #FFFFFF;
+    --clr-light-gray: #EBEBEB;
+    --clr-soft-pink: #DCACAC;
+
+    /* Used colors */
+    --clr-text-headings: var(--clr-red);
+    --clr-bg: var(--clr-soft-pink);
+    --clr-article-bg: var(--clr-white);
+    --clr-infobox-bg: var(--clr-light-gray);
+
+    /* Font */
+    --ff-base: "Open Sans", sans-serif;
+
+    --ff-bullet-size: 0.85rem;
+}
+
 body, html {
-    background-color: #DCACAC;
+    background-color: var(--clr-bg);
     margin: 0px;
     padding-top: 0px;    
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--ff-base);
+}
+
+.wrapper{
+    width: 60%;
+    min-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .top-image img{
@@ -73,49 +99,48 @@ body, html {
 }
 
 .infobox{
-    background-color: #EBEBEB;
+    background-color: var(--clr-infobox-bg);
     padding: 0.8rem;
     margin: 1rem;
 }
 
 .article {    
-    margin-bottom: 50px;
-}
+    background-color: var(--clr-article-bg);
+    margin-bottom: 1rem;
 
-.article h1{
-    color: #A10000;
-    margin: 1rem;
-}
+    h1, h2 {
+        margin: 1rem;
+    }
 
-.article h2{
-    margin: 1rem;
+    h1{
+        color: var(--clr-red);
+    }
+
+    /** Size of bullets **/
+    ul li::marker {
+        font-size: var(--ff-bullet-size);
+    }
+
+    /** Adjust list indentation **/
+    ul, ol {
+        text-align: left;
+        padding: 0px;
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+
+    li {
+        margin-top: 0.5rem;
+        margin-left: 1.5rem;
+    }
+
+    p {
+        margin-left: 1rem;
+    }
 }
 
 .article-content{
-    padding: 0rem 2rem 2rem 2rem;
-}
-
-/** Spacing between li**/
-.article li {
-    margin-top: 0.5rem;
-    margin-left: 1.5em;
-}
-
-/** Size of bullets **/
-.article ul li::marker {
-  font-size: 0.8em;
-}
-
-.article p {
-    margin-left: 1rem;
-}
-
-/** Reduce indentation of lists **/
-.article ul, ol {
-    text-align: left;
-    padding: 0px;
-    margin-top: 1rem;
-    margin-left: 1rem;
+    margin: 0rem 2rem 2rem 2rem;
 }
 
 .bottom-images{
@@ -124,21 +149,13 @@ body, html {
     column-gap: 20px;
     width: 100%;
     padding: 0 1rem 0 1rem;
-}
 
-.bottom-images img{
-    width: 100%;
-    height: 600px;
-    margin-bottom: 1rem;
-    object-fit: cover;
-}
-
-.wrapper{
-    background-color: white;
-    width: 60%;
-    min-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    img{
+        width: 100%;
+        height: 600px;
+        padding-bottom: 3rem;
+        object-fit: cover;
+    }
 }
 
 /** Responsive design **/
@@ -146,5 +163,4 @@ body, html {
     .bottom-images{
         grid-template-columns: 1fr;
     }
-    
 }
