@@ -118,12 +118,19 @@ ul {
   --fs-small: 0.825rem;
   --fs-medium: 1rem;
   --fs-large: 1.5rem;
+  --fs-xlarge: 2rem;
+  --fs-heading: 3rem;
+  --fs-xl-heading: 4rem;
 
   /* Bullet size */
   --ff-bullet-size: 0.85rem;
 
+  /* Border radius */
   --border-radius-sm: 0.4rem;
   --border-radius-md: 0.8rem;
+}
+.html {
+  scrollbar-gutter: stable;
 }
 
 /* Global styles */
@@ -141,33 +148,53 @@ ul {
   color: var(--clr-text-headings);
 }
 
+.section__heading {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: clamp(var(--fs-small), 4vw + 1rem, var(--fs-large));
+  color: var(--clr-text-headings);
+  margin: 1rem;
+}
+
+.section__text {
+  text-align: center;
+  text-wrap: pretty;
+  font-size: var(--fs-medium);
+  font-size: clamp(var(--fs-small), 2vw + 1rem, var(--fs-medium));
+  margin: 0rem 2rem 2rem 2rem;
+}
+
 .navbar {
   background-color: var(--clr-white);
   border-bottom: 3px solid var(--clr-red);
   .navbar__list {
     display: flex;
-    padding: 1rem;
-    place-content: flex-center;
+    padding: clamp(0rem, 1vw, 1rem);
     align-items: center;
   }
   .navbar__item {
-    margin-inline: 1rem;
+    margin-inline-start: clamp(0rem, 1vw, 1rem);
+    &:not(.navbar__logo) {
+      margin-inline-start: clamp(0.1rem, 3vw, 4rem);
+    }
     white-space: nowrap;
   }
   .navbar__item:first-child {
-    margin-right: auto;
+    margin-inline-end: auto;
   }
   .navbar__item:last-child {
-    margin-left: auto;
+    margin-inline-start: auto;
   }
   .navbar__button {
+    display: inline-block;
     background-color: var(--clr-bg-button);
-    padding: 0.75rem 1.25rem;
+    padding: clamp(0.5rem, 1vw + 1vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
     color: var(--clr-button-text);
     border-color: var(--clr-button-border);
     border-radius: 0.8rem;
     margin-top: -0.15rem;
     font-weight: var(--fw-bold);
+    font-size: clamp(var(--fs-small), 2vw + 0.5rem, var(--fs-medium));
     border: 1px solid var(--clr-button-border);
     outline: none;
     cursor: pointer;
@@ -190,11 +217,13 @@ ul {
   .navbar__link {
     &:not(.navbar__logo__link) {
       padding: 0.5rem 1rem;
+      display: inline-block;
+      min-height: 44px;
     }
     color: var(--clr-link);
     border-radius: 0.8rem;
     text-decoration: none;
-    font-size: var(--fs-large);
+    font-size: clamp(var(--fs-small), 2vw + 0.5rem, var(--fs-large));
   }
 
   .navbar__link--active {
@@ -206,12 +235,29 @@ ul {
     min-height: 50px;
     min-width: 50px;
     max-height: 80px;
+    margin-bottom: 5px;
+  }
+  .navbar__logo__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 3px solid;
+    border-radius: 0;
+    border-color: transparent;
+  }
+  .navbar__logo__link.navbar__link--active {
+    border-bottom: 3px solid;
+    border-radius: 0;
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
 
+/* Main content wrapper */
 .wrapper {
   width: 60%;
-  min-width: 700px;
+  max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -257,6 +303,11 @@ ul {
     list-style-type: disc;
   }
 
+  .list-item {
+    margin-top: 0.5rem;
+  }
+
+  /* List styling */
   .unordered-list {
     list-style-type: disc;
     .list-item {
@@ -271,11 +322,7 @@ ul {
     }
   }
 
-  .list-item {
-    margin-top: 0.5rem;
-  }
-
-  .article_text {
+  .article__text {
     margin-left: 1rem;
   }
 }
@@ -308,13 +355,12 @@ ul {
 
 .gallery {
   width: 70%;
-  min-width: 700px;
+  min-width: 320px;
 
   margin: 2rem auto;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
   gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
 
   a {
     text-decoration: none;
@@ -325,7 +371,8 @@ ul {
     height: 100%;
     background-color: var(--clr-article-bg);
     display: grid;
-    align-content: left;
+    text-align: top;
+    grid-template-rows: auto auto 1fr;
     gap: 0.5rem;
     border: 1px solid var(--clr-border);
     padding: 0.5rem;
@@ -342,4 +389,88 @@ ul {
       border-radius: var(--border-radius-sm);
     }
   }
+}
+
+.hero-image {
+  background-position: center center;
+  background-image: url("../images/hero_image.jpeg");
+
+  min-height: 40vh;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr;
+  margin-bottom: 2rem;
+
+  .hero__content {
+    align-content: center;
+    object-fit: cover;
+    width: 100%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .hero__text {
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    color: var(--clr-white);
+    font-size: clamp(var(--fs-small), 1.25vw + 1rem, var(--fs-xlarge));
+    font-weight: var(--fw-bold);
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+  .hero__heading {
+    color: var(--clr-white);
+    font-size: clamp(var(--fs-large), 3vw + 1rem, var(--fs-xl-heading));
+    font-weight: var(--fw-bold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  .hero__button {
+    background-color: var(--clr-bg-button);
+    border-color: var(--clr-button-border);
+    color: var(--clr-button-text);
+    padding: 0.75rem 1.25rem;
+    outline: none;
+    border: 1px solid var(--clr-button-border);
+    border-radius: 0.8rem;
+    box-shadow: 0px 0px 2px 1px rgba(109, 4, 4, 0.487);
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: var(--fw-bold);
+    font-size: clamp(var(--fs-small), 2vw + 0.5rem, var(--fs-medium));
+    cursor: pointer;
+    min-height: 44px;
+    min-width: 44px;
+
+    &:hover {
+      background-color: var(--clr-red-darker);
+      color: var(--clr-white);
+      transition: all 0.2s ease-in;
+      text-decoration: underline;
+    }
+  }
+}
+
+/**  This is not how you are supposed to do it, im pretty sure **/
+@media screen and (min-width: 2000px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+  }
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+form {
+  display: grid;
+  gap: 1rem;
+}
+.form__group {
+  display: grid;
+  gap: 0.5rem;
 }
