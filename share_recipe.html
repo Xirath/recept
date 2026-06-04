@@ -33,10 +33,12 @@
             <a class="navbar__link" href="gallery.html">Recept</a>
           </li>
           <li class="navbar__item">
-            <a class="navbar__link" href="#">Om oss</a>
+            <a class="navbar__link" href="about.html">Om oss</a>
           </li>
           <li class="navbar__item" aria-current="page">
-            <a class="navbar__link navbar__link--active" href="#"
+            <a
+              class="navbar__link navbar__link--active"
+              href="share_recipe.html"
               >Dela recept</a
             >
           </li>
@@ -81,11 +83,11 @@
           <!-- svårighetsgrad -->
           <fieldset>
             <legend>Välj en svårighetsgrad</legend>
-            <div>
+            <div class="form-group__radio-field">
               <label for="easy">Lätt</label>
               <input type="radio" id="easy" name="difficulty" value="easy" />
             </div>
-            <div>
+            <div class="form-group__radio-field">
               <label for="medium">Medel</label>
               <input
                 type="radio"
@@ -94,7 +96,7 @@
                 value="medium"
               />
             </div>
-            <div>
+            <div class="form-group__radio-field">
               <label for="hard">Svår</label>
               <input type="radio" id="hard" name="difficulty" value="hard" />
             </div>

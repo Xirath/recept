@@ -129,8 +129,11 @@ ul {
   --border-radius-sm: 0.4rem;
   --border-radius-md: 0.8rem;
 }
-.html {
+
+/* Always leave room & display the scrollbar so content don't jump around */
+html {
   scrollbar-gutter: stable;
+  overflow-y: scroll;
 }
 
 /* Global styles */
@@ -472,12 +475,6 @@ a:focus-visible {
   }
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
 form {
   display: grid;
   gap: 1rem;
@@ -486,12 +483,14 @@ form {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 .form-group {
   display: grid;
   gap: 0.5rem;
 
   select {
     justify-self: start;
+    margin-block-start: 0.45rem;
     height: fit-content;
     padding: 0.5rem;
     border-radius: var(--border-radius-sm);
@@ -516,8 +515,16 @@ input {
   width: 100%;
 }
 
-input[type="radio"] {
-  position: relative;
+.form-group__radio-field {
+  display: inline-grid;
+  align-items: center;
+  grid-auto-flow: dense;
+  padding: 0.15rem;
+
+  label {
+    padding-inline-start: 0.15rem;
+    grid-column: 2;
+  }
 }
 
 .form-group:has(.span-all) {
@@ -545,6 +552,11 @@ input[type="radio"] {
 }
 
 .contact-form {
+  .contact-form__heading {
+    margin-block-start: 0.25rem;
+    margin-block-end: 1rem;
+  }
+
   width: 70%;
   background-color: var(--clr-article-bg);
   padding: 2rem;
