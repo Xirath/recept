@@ -17,6 +17,7 @@
   </head>
   <body class="page__body">
     <header class="page__header">
+      <a href="#main" class="skip">Skip to main content</a>
       <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <ul class="navbar__list">
           <li class="navbar__item navbar__logo" aria-current="page">
@@ -35,10 +36,10 @@
             <a class="navbar__link" href="gallery.html">Recept</a>
           </li>
           <li class="navbar__item">
-            <a class="navbar__link" href="#">Om oss</a>
+            <a class="navbar__link" href="om-oss.html">Om oss</a>
           </li>
           <li class="navbar__item">
-            <a class="navbar__link" href="#">Kontakt</a>
+            <a class="navbar__link" href="kontakta.html">Kontakt</a>
           </li>
           <li class="navbar__item">
             <button class="navbar__button">Logga in</button>
@@ -53,15 +54,13 @@
             matlagningsinspiration. Utforska vårt stora utbud av recept, tips
             och tricks för att bli en mästare i köket!
           </p>
-          <a href="gallery.html">
-            <button class="hero__button" aria-label="Utforska recept">
-              Utforska recept
-            </button>
+          <a href="gallery.html" aria-label="Utforska recept">
+            <button class="hero__button" tabindex="-1">Utforska recept</button>
           </a>
         </div>
       </section>
     </header>
-    <div class="wrapper">
+    <main id="main" class="wrapper">
       <section class="content">
         <h2 class="section__heading">Våra mest populära recept</h2>
         <p class="section__text">
@@ -94,6 +93,6 @@
           </a>
         </div>
       </section>
-    </div>
+    </main>
   </body>
 </html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="page" lang="sv">
+  <head>
+    <title>Kontakta oss</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="images/logo_white.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="page__body">
+    <header class="page__header">
+      <a href="#main" class="skip">Skip to main content</a>
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <ul class="navbar__list">
+          <li class="navbar__item navbar__logo">
+            <a class="navbar__link navbar__logo__link" href="index.html">
+              <img
+                src="images/logo_color.svg"
+                class="navbar__item__logo"
+                alt="Superchef Home"
+              />
+            </a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="gallery.html">Recept</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#">Om oss</a>
+          </li>
+          <li class="navbar__item" aria-current="page">
+            <a class="navbar__link navbar__link--active" href="#"
+              >Dela recept</a
+            >
+          </li>
+          <li class="navbar__item">
+            <button class="navbar__button">Logga in</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="contact-form">
+      <h1 class="contact-form__heading">Ditt recept</h1>
+
+      <form class="contact-form__form" action="#" method="post">
+        <div class="form-group">
+          <label for="name" class="contact-form__label">Receptets namn:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="contact-form__input"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <!-- tillagningstid -->
+          <label for="hard">Tillagningstid (Minuter)</label>
+          <input type="number" min="1" id="time" />
+        </div>
+
+        <div class="form-group">
+          <!-- Kategori -->
+          <select>
+            <option selected disabled>Välj recept-typ</option>
+            <option>Frukost</option>
+            <option>Middag</option>
+            <option>Efterrätt</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <!-- svårighetsgrad -->
+          <fieldset>
+            <legend>Välj en svårighetsgrad</legend>
+            <div>
+              <label for="easy">Lätt</label>
+              <input type="radio" id="easy" name="difficulty" value="easy" />
+            </div>
+            <div>
+              <label for="medium">Medel</label>
+              <input
+                type="radio"
+                id="medium"
+                name="difficulty"
+                value="medium"
+              />
+            </div>
+            <div>
+              <label for="hard">Svår</label>
+              <input type="radio" id="hard" name="difficulty" value="hard" />
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="contact-form__label">Ingredienser:</label>
+          <textarea
+            id="message"
+            name="message"
+            class="contact-form__textarea"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="contact-form__label"
+            >Instruktioner:</label
+          >
+          <textarea
+            id="message"
+            name="message"
+            class="contact-form__textarea"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <!-- Bild -->
+          <label for="image">Lägg till en bild för ditt recept</label>
+          <input id="image" type="file" />
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="contact-form__label">E-post:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="contact-form__input"
+            required
+          />
+        </div>
+
+        <div>
+          <!-- finprint checkbox -->
+        </div>
+        <div class="form-group">
+          <button type="submit" class="contact-form__button span-all">
+            Skicka in recept
+          </button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

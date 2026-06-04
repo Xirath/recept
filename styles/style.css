@@ -164,6 +164,12 @@ ul {
   margin: 0rem 2rem 2rem 2rem;
 }
 
+a:focus-visible {
+  outline: 3px solid #420203;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .navbar {
   background-color: var(--clr-white);
   border-bottom: 3px solid var(--clr-red);
@@ -205,6 +211,12 @@ ul {
       color: var(--clr-white);
       transition: all 0.2s ease-in;
       text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 3px solid #420203;
+      outline-offset: 4px;
+      border-radius: 4px;
     }
   }
 
@@ -469,8 +481,100 @@ select {
 form {
   display: grid;
   gap: 1rem;
+
+  @media (width > 720px) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
-.form__group {
+.form-group {
   display: grid;
   gap: 0.5rem;
+
+  select {
+    justify-self: start;
+    height: fit-content;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-sm);
+  }
+}
+
+label {
+  text-transform: uppercase;
+}
+
+fieldset {
+  justify-self: start;
+  padding: 0.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--border-radius-sm);
+  accent-color: var(--clr-red);
+
+  width: 100%;
+}
+
+input[type="radio"] {
+  position: relative;
+}
+
+.form-group:has(.span-all) {
+  grid-column: 1 / -1;
+}
+
+.skip {
+  position: absolute;
+  overflow: hidden;
+  background: var(--clr-red-darker);
+  padding: 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  left: 0.5rem;
+  transform: translateY(-120%);
+  transition: transform 0.3s ease-in;
+
+  color: var(--clr-white);
+}
+
+.skip:focus {
+  border-radius: 0 0 0.5rem 0.5rem;
+  transform: translateY(0);
+
+  color: var(--clr-white);
+}
+
+.contact-form {
+  width: 70%;
+  background-color: var(--clr-article-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--clr-border);
+  margin: 2rem;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+
+.contact-form__button {
+  justify-self: start;
+  display: inline-block;
+  background-color: var(--clr-bg-button);
+  padding: clamp(0.5rem, 1vw + 1vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
+  color: var(--clr-button-text);
+  border-color: var(--clr-button-border);
+  border-radius: 0.8rem;
+  margin-top: -0.15rem;
+  font-weight: var(--fw-bold);
+  font-size: clamp(var(--fs-small), 2vw + 0.5rem, var(--fs-medium));
+  border: 1px solid var(--clr-button-border);
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 1px rgba(109, 4, 4, 0.487);
+
+  &:hover {
+    background-color: var(--clr-red-darker);
+    color: var(--clr-white);
+    transition: all 0.2s ease-in;
+    text-decoration: underline;
+  }
 }
