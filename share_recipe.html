@@ -43,7 +43,7 @@
             >
           </li>
           <li class="navbar__item">
-            <button class="navbar__button">Logga in</button>
+            <button class="button">Logga in</button>
           </li>
         </ul>
       </nav>
@@ -72,10 +72,10 @@
         <div class="form-group">
           <!-- Kategori -->
           <select>
-            <option selected disabled>Välj recept-typ</option>
-            <option>Frukost</option>
-            <option>Middag</option>
-            <option>Efterrätt</option>
+            <option value="" selected disabled>Välj recept-typ</option>
+            <option value="breakfast">Frukost</option>
+            <option value="dinner">Middag</option>
+            <option value="dessert">Efterrätt</option>
           </select>
         </div>
 
@@ -140,6 +140,7 @@
             id="email"
             name="email"
             class="contact-form__input"
+            autocomplete="email"
             required
           />
         </div>
@@ -148,7 +149,7 @@
           <!-- finprint checkbox -->
         </div>
         <div class="form-group">
-          <button type="submit" class="contact-form__button span-all">
+          <button type="submit" class="button contact-form__button span-all">
             Skicka in recept
           </button>
         </div>

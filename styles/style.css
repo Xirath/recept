@@ -96,6 +96,9 @@ ul {
   --clr-light-gray: #ebebeb;
   --clr-soft-pink: #dcacac;
   --clr-red-darker: #7a0000;
+  --clr-red-focus: #420203;
+  --clr-red-outline: #7f5556;
+  --clr-red-selected: #8f6464;
 
   /* Used colors */
   --clr-text-headings: var(--clr-red);
@@ -107,6 +110,8 @@ ul {
   --clr-bg-button: var(--clr-white);
   --clr-button-text: var(--clr-red);
   --clr-button-border: var(--clr-red-darker);
+  --clr-focus: var(--clr-red-focus);
+  --clr-outline: var(--clr-red-outline);
 
   /* Font */
   --ff-base: "Open Sans", sans-serif;
@@ -168,11 +173,45 @@ html {
 }
 
 a:focus-visible {
-  outline: 3px solid #420203;
+  outline: 3px solid var(--clr-focus);
   outline-offset: 4px;
   border-radius: 4px;
 }
 
+.contact-form__button {
+  justify-self: start;
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--clr-bg-button);
+  padding: clamp(0.5rem, 1vw + 1vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
+  color: var(--clr-button-text);
+  border-color: var(--clr-button-border);
+  border-radius: 0.8rem;
+  margin-top: -0.15rem;
+  font-weight: var(--fw-bold);
+  font-size: clamp(var(--fs-small), 2vw + 0.5rem, var(--fs-medium));
+  border: 1px solid var(--clr-button-border);
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 1px rgba(109, 4, 4, 0.487);
+
+  &:hover {
+    background-color: var(--clr-red-darker);
+    color: var(--clr-white);
+    transition: all 0.2s ease-in;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--clr-focus);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+/****** Navbar ******/
 .navbar {
   background-color: var(--clr-white);
   border-bottom: 3px solid var(--clr-red);
@@ -193,34 +232,6 @@ a:focus-visible {
   }
   .navbar__item:last-child {
     margin-inline-start: auto;
-  }
-  .navbar__button {
-    display: inline-block;
-    background-color: var(--clr-bg-button);
-    padding: clamp(0.5rem, 1vw + 1vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
-    color: var(--clr-button-text);
-    border-color: var(--clr-button-border);
-    border-radius: 0.8rem;
-    margin-top: -0.15rem;
-    font-weight: var(--fw-bold);
-    font-size: clamp(var(--fs-small), 2vw + 0.5rem, var(--fs-medium));
-    border: 1px solid var(--clr-button-border);
-    outline: none;
-    cursor: pointer;
-    box-shadow: 0px 0px 2px 1px rgba(109, 4, 4, 0.487);
-
-    &:hover {
-      background-color: var(--clr-red-darker);
-      color: var(--clr-white);
-      transition: all 0.2s ease-in;
-      text-decoration: underline;
-    }
-
-    &:focus-visible {
-      outline: 3px solid #420203;
-      outline-offset: 4px;
-      border-radius: 4px;
-    }
   }
 
   .navbar__link:hover {
@@ -442,30 +453,6 @@ a:focus-visible {
     font-weight: var(--fw-bold);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   }
-  .hero__button {
-    background-color: var(--clr-bg-button);
-    border-color: var(--clr-button-border);
-    color: var(--clr-button-text);
-    padding: 0.75rem 1.25rem;
-    outline: none;
-    border: 1px solid var(--clr-button-border);
-    border-radius: 0.8rem;
-    box-shadow: 0px 0px 2px 1px rgba(109, 4, 4, 0.487);
-    margin-top: 2.5rem;
-    margin-bottom: 2rem;
-    font-weight: var(--fw-bold);
-    font-size: clamp(var(--fs-small), 2vw + 0.5rem, var(--fs-medium));
-    cursor: pointer;
-    min-height: 44px;
-    min-width: 44px;
-
-    &:hover {
-      background-color: var(--clr-red-darker);
-      color: var(--clr-white);
-      transition: all 0.2s ease-in;
-      text-decoration: underline;
-    }
-  }
 }
 
 /**  This is not how you are supposed to do it, im pretty sure **/
@@ -484,17 +471,62 @@ form {
   }
 }
 
+/* Allows customization of the select element, not supported in Firefox & Safari */
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
 .form-group {
   display: grid;
   gap: 0.5rem;
 
   select {
+    /* width: max-content does not work with base-select */
+    min-width: 15ch;
     justify-self: start;
     margin-block-start: 0.45rem;
     height: fit-content;
     padding: 0.5rem;
     border-radius: var(--border-radius-sm);
+
+    option:disabled {
+      background-color: var(--clr-bg);
+    }
+
+    option {
+      background-color: var(--clr-bg);
+    }
+    option:checked {
+      background-color: var(--clr-red-selected);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--clr-focus);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
   }
+}
+
+select:hover,
+select:focus {
+  background: var(--clr-bg);
+}
+
+option:hover,
+option:focus {
+  background: black;
+}
+
+input::file-selector-button {
+  font-weight: bold;
+  color: var(--clr-red-darker);
+  padding: 0.5rem 1rem;
+  margin-block: -0.5rem;
+  border: thin solid var(--clr-outline);
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 label {
@@ -513,6 +545,12 @@ input {
   accent-color: var(--clr-red);
 
   width: 100%;
+
+  &:focus-visible {
+    outline: 3px solid var(--clr-focus);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
 }
 
 .form-group__radio-field {
@@ -567,26 +605,13 @@ input {
   margin-inline-end: auto;
 }
 
-.contact-form__button {
-  justify-self: start;
-  display: inline-block;
-  background-color: var(--clr-bg-button);
-  padding: clamp(0.5rem, 1vw + 1vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
-  color: var(--clr-button-text);
-  border-color: var(--clr-button-border);
-  border-radius: 0.8rem;
-  margin-top: -0.15rem;
-  font-weight: var(--fw-bold);
-  font-size: clamp(var(--fs-small), 2vw + 0.5rem, var(--fs-medium));
-  border: 1px solid var(--clr-button-border);
-  outline: none;
-  cursor: pointer;
-  box-shadow: 0px 0px 2px 1px rgba(109, 4, 4, 0.487);
+.contact-form__textarea {
+  resize: none;
+  width: 100%;
 
-  &:hover {
-    background-color: var(--clr-red-darker);
-    color: var(--clr-white);
-    transition: all 0.2s ease-in;
-    text-decoration: underline;
+  &:focus-visible {
+    outline: 3px solid var(--clr-focus);
+    outline-offset: 4px;
+    border-radius: 4px;
   }
 }
