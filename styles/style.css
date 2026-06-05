@@ -501,6 +501,11 @@ select,
       background-color: var(--clr-red-selected);
     }
 
+    option:hover,
+    option:focus {
+      background: var(--clr-red-selected);
+    }
+
     &:focus-visible {
       outline: 3px solid var(--clr-focus);
       outline-offset: 4px;
@@ -512,11 +517,6 @@ select,
 select:hover,
 select:focus {
   background: var(--clr-bg);
-}
-
-option:hover,
-option:focus {
-  background: black;
 }
 
 input::file-selector-button {
